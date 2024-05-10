@@ -143,7 +143,7 @@ public class UserController {
     
     @PutMapping(value = "/updateUser/{id}")
     public User updateUser(@PathVariable Long id,@RequestBody User user){
-    	
+  
     	return userServ.updateUser(id,user);
     }
     

@@ -14,7 +14,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 
@@ -37,13 +36,10 @@ public class User {
     private Date created;
     private String rolename;
     private boolean isEnabled;
+    private Long image;
+
     
-
-    @ManyToOne
-	private Image image;
-
-
-    @JsonIgnore
+	@JsonIgnore
     @ManyToMany
     @JoinTable(name = "participation", joinColumns = @JoinColumn(name = "id"), inverseJoinColumns = @JoinColumn(name = "idevenement"))
     private Set<Evenement> evenement = new HashSet<>();
@@ -97,6 +93,8 @@ public class User {
 	public void setNom_ut(String nom_ut) {
 		this.nom_ut = nom_ut;
 	}
+	
+	
 
 	public String getPrenom_ut() {
 		return prenom_ut;
@@ -202,6 +200,14 @@ public class User {
 				+ adresse + ", created=" + created + ", rolename=" + rolename
 				+ ", isEnabled=" + isEnabled + ", evenement=" + evenement + ", article=" + article + ", actualite="
 				+ actualite + "]";
+	}
+
+	public Long getImage() {
+		return image;
+	}
+
+	public void setImage(Long image) {
+		this.image = image;
 	}
 
 	

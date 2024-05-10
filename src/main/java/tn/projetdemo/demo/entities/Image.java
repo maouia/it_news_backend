@@ -37,9 +37,7 @@ public class Image {
     private byte[] image;
 
 
-    @JsonIgnore
-    @OneToMany(mappedBy = "image")
-    List<User> users ;
+
 
     public Long getIdImage() {
         return idImage;
@@ -69,13 +67,6 @@ public class Image {
         this.image = image;
     }
 
-	public List<User> getUsers() {
-		return users;
-	}
-
-	public void setUsers(List<User> users) {
-		this.users = users;
-	}
 
 	public void setIdImage(Long idImage) {
 		this.idImage = idImage;

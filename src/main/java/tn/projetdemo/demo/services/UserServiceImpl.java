@@ -7,15 +7,20 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
+import tn.projetdemo.demo.entities.Image;
 import tn.projetdemo.demo.entities.User;
 import tn.projetdemo.demo.repository.UserRepository;
+import tn.projetdemo.demo.repository.ImageRepository;
+
+
 
 @Service
 public class UserServiceImpl implements UserServiceinter {
 	
 	@Autowired
 	UserRepository userRep;
+	@Autowired
+	ImageRepository imageRep;
 
 	@Override
 	public User addUser(User user) {
@@ -62,11 +67,13 @@ public class UserServiceImpl implements UserServiceinter {
 
 	@Override
 	public User updateUser(Long iduser, User user) {
-		// TODO Auto-generated method stub
+		
+		
 		User usr = userRep.findById(iduser).get();
 		
 		usr.setPrenom_ut(user.getPrenom_ut());
 		usr.setNom_ut(user.getNom_ut());
+		usr.setImage(user.getImage()); 
 		return userRep.save(usr);
 	}
 	@Override
